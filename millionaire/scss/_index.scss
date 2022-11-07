@@ -1,0 +1,474 @@
+body {
+    background: url('./../img/mainbg.jpg') center center / contain repeat;
+    background-blend-mode: soft-light;
+    background-color: darken($subColor5, 8%);
+}
+
+.overlay {
+    position: relative;
+
+    &::before {
+        position: fixed;
+        z-index: 1;
+        content: '';
+        background-color: rgba(0, 0, 0, 0.6);
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.pop-up {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    position: absolute;
+    z-index: 100;
+
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include adaptiveValue("width", 500, 250);
+    padding: 0 rem(15);
+    @include adaptiveValue("padding-top", 50, 20);
+    @include adaptiveValue("padding-bottom", 50, 20);
+    border-radius: 10px;
+    outline: 7px double $subColor5;
+    background: $subColor3;
+
+    &>p {
+        width: 80%;
+        font-weight: 500;
+        line-height: 150%;
+        @include adaptiveValue("font-size", 24, 18);
+        text-shadow: 1px 3px 8px #000;
+    }
+
+    &-btns {
+        display: flex;
+        margin-top: rem(15);
+        gap: rem(20);
+    }
+
+    &-btn {
+        width: fit-content;
+        min-width: rem(75);
+        padding: rem(8) rem(20);
+        border-radius: 5px;
+        background: $subColor1;
+        color: $subColor5;
+        border: 2px solid transparent;
+        font-weight: 700;
+    }
+
+    &-start {
+        margin-top: rem(40);
+    }
+
+
+    &-yes,
+    &-next,
+    &-start {
+        &:hover {
+            color: $subColor4;
+            border-color: $subColor4;
+            box-shadow: 0 2px 6px rgba($subColor5, .8);
+        }
+    }
+
+    &-no {
+        &:hover {
+            color: $subColor2;
+            border-color: $subColor2;
+            box-shadow: 0 2px 6px rgba($subColor5, .8);
+        }
+    }
+}
+
+
+
+.active {
+    display: flex;
+}
+
+.header {
+
+    &__container {
+        padding: rem(40) 0 rem(60);
+    }
+
+    h1 {
+        font-family: $headerFont;
+        font-size: rem(36);
+        text-align: center;
+
+        text-shadow: 0 0 90px $mainColor;
+
+        span:first-of-type {
+            color: $subColor2;
+        }
+
+        span:last-of-type {
+            color: $subColor4;
+        }
+    }
+}
+
+
+.main {
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        user-select: none;
+    }
+
+}
+
+.game-start {
+    width: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: rem(24);
+
+    p {
+        padding: rem(40);
+        background-color: rgba(darken($subColor5, 10%), .8);
+
+        span {
+            font-weight: 600;
+            color: $subColor3;
+        }
+
+        &+div {
+            margin-top: rem(20);
+
+            input {
+                width: rem(20);
+                height: rem(20);
+                margin-right: rem(10);
+
+                &:checked {
+                    accent-color: $subColor4;
+                    box-shadow: 0 0 14px $mainColor;
+                }
+            }
+        }
+    }
+}
+
+.game-over-screen {
+    width: fit-content;
+    height: fit-content;
+    ;
+    background: url('./../img/winwinwin.gif') center center / cover no-repeat;
+
+    margin-top: rem(30);
+    text-align: center;
+
+    img {
+        // width: 120%;
+    }
+
+    p {
+        margin-top: rem(30);
+        font-size: rem(36);
+        font-style: italic;
+        padding: rem(25);
+        border-radius: 10px;
+        background: rgba($subColor5, .7);
+        outline: 7px dotted $subColor2;
+
+        -webkit-animation: color-change-3x 4s linear infinite both;
+        animation: color-change-3x 4s linear infinite both;
+    }
+}
+
+.game {
+
+    width: 75%;
+    margin-top: rem(40);
+
+    &__wrapper {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        // grid-template-rows: repeat(2, auto);
+        align-items: center;
+        justify-items: center;
+        // padding: 0 rem(120);
+        gap: rem(40);
+
+        @media (max-width: $tablet) {
+            grid-template-columns: auto;
+        }
+    }
+
+    .circle-snowman {
+        @include adaptiveValue("width", 190, 100);
+        @include adaptiveValue("height", 190, 100);
+        border-radius: 50%;
+        position: absolute;
+        top: -25%;
+        left: -10%;
+        transform: translate(-25%, -10%);
+        outline: 11px inset $subColor2;
+        border: 7px dotted $subColor3;
+
+        background: #CAD1D7 center center / contain no-repeat;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: $mobile) {
+            top: -30%;
+            left: 10%;
+            transform: translateX(-70%);
+        }
+
+        img {
+            width: 100%;
+        }
+
+    }
+
+    &__main {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .question {
+            @include adaptiveValue("width", 591, 231);
+            min-height: rem(200);
+            padding: 8% 4%;
+            background: $subColor5;
+            outline: 7px double $subColor3;
+            border-radius: 10px;
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+
+            @include adaptiveValue("font-size", 22, 18);
+
+            &__header {
+                text-transform: uppercase;
+
+                &>span {
+                    margin-left: rem(5);
+                    font-weight: 700;
+                    color: $subColor4;
+                }
+
+                @media (max-width: $mobile) {
+
+                    margin-top: rem(20);
+                }
+            }
+
+            &__text {
+                @include adaptiveValue("margin-top", 20, 10);
+            }
+
+            &__timer {
+                font-size: rem(20);
+            }
+        }
+
+        .answers {
+            width: 90%;
+            margin-top: rem(35);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: rem(20);
+
+            @include adaptiveValue("font-size", 18, 16);
+
+            @media (max-width: $mobile) {
+                flex-direction: column;
+            }
+        }
+
+        .answer {
+            width: 45%;
+            padding: rem(25);
+
+            background: $mainColor;
+            border-radius: 10px;
+            color: $subColor5;
+            font-weight: 700;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;
+
+            &:hover {
+                background: darken($subColor1, 0%);
+            }
+
+            &-correct-when-incorrect {
+                background-color: $subColor4;
+            }
+
+            &-correct {
+                animation: correct-answer .4s 4 both;
+            }
+
+            &-incorrect {
+                animation: incorrect-answer .4s 4 both;
+            }
+
+            &-disabled {
+                background: darken($mainColor, 30%);
+            }
+
+            @media (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+
+        .end-game {
+            width: 80%;
+            // height: rem(60);
+            padding: rem(20);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            margin-top: rem(35);
+            background: $subColor5;
+            border-radius: 10px;
+
+            letter-spacing: rem(2);
+            font-weight: 700;
+            line-height: 140%;
+            outline: 7px double $subColor3;
+
+            &:hover {
+                background: darken($subColor5, 5%);
+                outline-color: darken($subColor3, 5%);
+            }
+        }
+
+    }
+
+    &__side {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .lifeline {
+            display: flex;
+            justify-content: space-between;
+            color: $subColor5;
+
+            gap: rem(20);
+
+            &>button {
+                @include adaptiveValue("width", 130, 100);
+                height: rem(65);
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                cursor: pointer;
+
+                font-weight: 700;
+                font-size: rem(20);
+
+                background: #CAD2D5;
+
+
+                &:hover {
+                    box-shadow: 0 0 28px $subColor4;
+                }
+
+                .lifeline-disabled {
+                    background: darken($mainColor, 30%);
+                }
+            }
+
+            &-fifty {}
+
+            &-call {}
+
+
+        }
+
+        .price {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: rem(30);
+            margin-top: rem(35);
+
+            line-height: 140%;
+
+            &>div {
+                width: 100%;
+                height: rem(80);
+                background: $subColor5;
+                border-radius: 10px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+
+                @media (max-width: $mobileSmall) {
+                    width: 80%;
+                }
+            }
+
+            &-current {
+                outline: 7px dotted $subColor2;
+
+                -webkit-animation: color-change-3x 4s linear infinite both;
+                animation: color-change-3x 4s linear infinite both;
+
+                span {}
+            }
+
+            &-guaranteed {
+                outline: 7px double $subColor3;
+            }
+
+        }
+
+        @media (max-width: $tablet) {
+            margin-top: rem(25);
+        }
+
+    }
+}
+
+.footer {
+    width: 100%;
+    margin-top: rem(60);
+    padding: rem(40);
+
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+}

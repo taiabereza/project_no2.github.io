@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Хто хо-хо-хоче стати мільйонером?</title>
+	<link rel="stylesheet" href="./css/style.min.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<header class="header">
+			<div class="header__container">
+				<a href="./index.html">
+					<h1>
+						ХТО
+						<br>
+						<span>ХО</span>-<span>ХО</span>-ХОЧЕ
+						<br>
+						СТАТИ МІЛЬЙОНЕРОМ?
+					</h1>
+				</a>
+			</div>
+		</header>
+
+		<main class="main">
+			<div class="main__container">
+
+				<section class="game-start">
+					<p>Вітаємо на ігровому шоу <span><i>"Хто ХО-ХО-ХОче стати мільйонером: Різдвяна версія"</i></span>!
+						<br><br>
+						Правила прості й знайомі: вам будуть поставлені 15 запитань, кожне з яких матиме свою вартість.
+						Ваша задача - дати правильні відповіді та отримати головний грошовий приз - ₴1.000.000!
+						<br><br>
+						У вас є дві підказки:
+						<br><br>
+						<span>50/50</span> - прибирає два неправильних з чотирьох варіантів відповідей.
+						<br><br>
+						<span>Дзвінок другу</span> - ви маєте можливість проконсольтуватися із другом та почути його
+						версію перед тим, як зробити вибір. Але будьте обережні! Люди можуть помилятися!
+						<br><br>
+						Нижче ви можете обрати версію гри: з <span>обмеженним</span> або з <span>необмеженним</span>
+						часом.
+						<br><br>
+						Чи ви настільки ж великий фанат Різдва, як ми? Давайте перевіримо!
+					</p>
+					<div>
+						<input type="checkbox" name="time-limited" id="time-limited">
+						<label for="time-limited">Грати з <u>обмеженним</u> часом.</label>
+					</div>
+					<button class="pop-up-btn pop-up-start">ГРАТИ</button>
+				</section>
+
+				<section class="game-over-screen" style="display: none;">
+					<img src="./img/snowman_win.gif" alt="snowman-win">
+					<p>Щасливого Різдва і веселих свят!</p>
+				</section>
+
+				<section class="game" style="display: none;">
+					<div class="game__wrapper">
+						<div class="game__main">
+							<div class="question">
+								<div class="circle-snowman"><img src="./img/snowman_question.gif" alt=""></div>
+								<p class="question__header">Питання №1 <span>₴100</span></p>
+								<div class="question__timer"></div>
+								<p class="question__text">Тіло питання?</p>
+							</div>
+							<div class="answers">
+								<button data-answer=1 class="answer">A. Відповідь №1</button>
+								<button data-answer=2 class="answer">B. Відповідь №2</button>
+								<button data-answer=3 class="answer">C. Відповідь №3</button>
+								<button data-answer=4 class="answer">D. Відповідь №4</button>
+							</div>
+							<button class="end-game">Закінчити гру й забрати поточний банк</button>
+						</div>
+						<div class="game__side">
+							<div class="lifeline">
+								<button class="lifeline-fifty">50 / 50</button>
+								<button class="lifeline-call">Дзвінок<br>другу</button>
+							</div>
+							<div class="price">
+								<div class="price-current">Ваш банк:<br>₴0</div>
+								<div class="price-guaranteed">Гарантована сума:<br>₴0</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="pop-up">
+					<p class="pop-up-message">Це ваша фінальна відповідь?</p>
+					<div class="pop-up-btns">
+						<button class="pop-up-btn pop-up-yes" style="display: none;">Так</button>
+						<button class="pop-up-btn pop-up-no" style="display: none;">Ні</button>
+						<button class="pop-up-btn pop-up-next" style="display: block;">Наступне питання</button>
+						<button class="pop-up-btn pop-up-ok" style="display: block;">ОК</button>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<footer class="footer">
+			<div class="footer__container">
+				<p>&#169; Anastasiia Bereza, 2022</p>
+			</div>
+		</footer>
+	</div>
+
+	<script src="./js/script.js"></script>
+
+</body>
+
+</html>

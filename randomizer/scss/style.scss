@@ -1,0 +1,120 @@
+@use "sass:math";
+
+// MIXINS
+@import "base/mixins";
+
+// FONTS
+@import url(https://fonts.googleapis.com/css?family=Exo+2:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
+// PROPERTIES
+
+// FONT
+$fontFamily: "Exo 2", sans-serif;
+$fontSize: rem(18);
+
+// PALETTE
+$mainColor: #b7b2be; 
+$subColor1: #010e27;
+$subColor2: #f299ee;
+$subColor3: #9535b4;
+$subColor4: #01a5d0;
+
+
+// ADAPTIVE SETTINGS
+
+// PAGE'S MINWIDTH
+$minWidth: 320;
+// LAYOUT WIDTH
+$maxWidth: 1920;
+// MAXWIDTH CONTAINER
+$maxWidthContainer: 1200;
+// PADDING
+// (30 = 15px + 15px, 0 = false)
+$containerPadding: 30;
+
+// FIRST BREAKPOINT
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// BREAKPOINTS
+$pc: em($containerWidth);
+$tablet: em(991.98);
+$mobile: em(767.98);
+$mobileSmall: em(479.98);
+
+// ADAPTIVE TYPE:
+// 1 = RESPONSIVE,
+// 2 = BY BREAKPOINTS
+$responsiveType: 1;
+
+// NULL STYLE FILE
+@import "base/null";
+
+// COMMON BODY PROPERTIES
+body {
+	// Скролл заблокирован
+	.lock & {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
+	// Сайт загружен
+	// .loaded & {
+	// }
+}
+
+// COMMON WRAPPER PROPERTIES
+.wrapper {
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	// FOOTER
+	> main {
+		flex: 1 1 auto;
+	}
+	// SLIDERS
+	> * {
+		min-width: 0;
+	}
+}
+
+// CONTAINER PROPERTIES
+@if ($responsiveType==1) {
+	// RESPONSIVE
+	[class*="__container"] {
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if ($containerPadding>0) {
+			padding: 0 rem(math.div($containerPadding, 2));
+		}
+	}
+} @else {
+	// BY BREAKPOINTS
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: rem($maxWidthContainer);
+			box-sizing: content-box;
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: rem(970);
+		}
+		@media (max-width: $tablet) {
+			max-width: rem(750);
+		}
+		@media (max-width: $mobile) {
+			max-width: none;
+			@if ($containerPadding>0 and $maxWidthContainer>0) {
+				padding: 0 rem(math.div($containerPadding, 2));
+			}
+		}
+	}
+}
+
+@import "index";

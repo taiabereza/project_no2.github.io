@@ -1,0 +1,160 @@
+body {
+    background: url('./../img/bgimg.jpg') no-repeat;
+    background-blend-mode: color-burn;
+    background-color: $subColor1;
+}
+
+.header {
+    padding: rem(50);
+    font-size: rem(36);
+    text-transform: uppercase;
+
+    display: flex;
+
+    object {
+        width: rem(80);
+    }
+
+    h1 {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        position: relative;
+        color: $subColor4;
+        text-shadow: 0 0 3px $subColor4;
+    }
+}
+
+.main {
+    margin-top: rem(70);
+
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.calc {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 60%;
+    height: fit-content;
+    padding: rem(40) rem(5);
+    border-radius: 15px;
+    background-color: rgba($subColor3, .35);
+    box-shadow: 0 0 200px $subColor3;
+    // filter: drop-shadow(2px 4px 6px black);
+
+    &__screen {
+
+        width: 90%;
+        height: rem(50);
+        padding: rem(15);
+        text-align: right;
+        background-color: rgba($mainColor, .2);
+        outline: 4px inset $subColor3;
+        color: $subColor4;
+        text-shadow: 0 0 3px $subColor4;
+        @include adaptiveValue("font-size", 24, 20);
+
+    }
+
+    &__btns {
+        display: grid;
+        grid-template-columns: auto 2fr;
+        grid-template-rows: 2fr auto;
+        margin-top: rem(30);
+        gap: rem(5);
+        justify-items: center;
+
+        .btn {
+            @include adaptiveValue("font-size", 22, 14);
+            // min-width: 23.9%;
+            // width: 30%;
+            background: rgba($subColor2, .4);
+            // margin: rem(3);
+            border-radius: 3px;
+            // padding: rem(20) rem(61);
+
+            @include adaptiveValue("padding-top", 20, 10);
+            @include adaptiveValue("padding-bottom", 20, 10);
+            @include adaptiveValue("padding-right", 51, 7);
+            @include adaptiveValue("padding-left", 51, 7);
+            font-weight: 600;
+
+            color: $subColor4;
+            text-shadow: 0 0 2px $subColor4;
+            
+
+            &:hover {
+                background: rgba(lighten($subColor2, 10%), .4);
+            }
+        }
+
+        width: 90%;
+
+        &_left {
+            grid-row: 1/-1;
+            display: flex;
+            flex-direction: column;
+            gap: rem(5);
+        }
+
+        &_num {
+            // width: 75%;
+            grid-row: 1/2;
+            display: grid;
+            gap: rem(5);
+            justify-items: center;
+            
+            .btn {
+                width: 30%;
+                background-color: rgba($mainColor, .15);
+            }
+
+            .wrapper {
+                width: 94%;
+                gap: rem(5);
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .zero {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: rem(5);
+                .btn-num-0 {
+                    width: 56%;
+                }
+            }
+        }
+
+        &_bottom {
+            grid-row: 2/3;
+            gap: rem(5);
+            display: flex;
+            justify-self: stretch;
+            justify-content: space-evenly;
+            .btn {
+                width: 40%;
+            }
+        }
+
+    }
+}
+
+.footer {
+    width: 100%;
+    margin-top: rem(60);
+    padding: rem(40);
+
+    &__container {
+        display: flex;
+        justify-content: center;
+    }
+}

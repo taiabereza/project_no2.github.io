@@ -1,0 +1,11 @@
+@keyframes header-shine {
+    0% {
+        text-shadow: 0 0 1px $subColor4; 
+    }
+    50% {
+        text-shadow: 0 0 13px $subColor4; 
+    }
+    100% {
+        text-shadow: 0 0 1px $subColor4; 
+    }
+}

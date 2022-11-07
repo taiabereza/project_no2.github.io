@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор випадкових чисел</title>
+    <link rel="stylesheet" href="./css/style.min.css">
+</head>
+
+<body>
+    <div class="body_wrap">
+        <div class="bg bg_left">
+        </div>
+
+        <div class="wrapper">
+            <header class="header">
+                <div class="header__container">
+                    <a href="./index.html" class="header__logo">
+                        <span class="actual-text">генератор<br>випадкових<br>чисел</span>
+                        <span class="hover-text" aria-hidden="true">генератор<br>випадкових<br>чисел</span>
+                    </a>
+                </div>
+            </header>
+
+            <main class="main">
+                <div class="main__container">
+                    <div class="main__header">
+
+                    </div>
+
+                    <section class="lucky">
+                        <div class="lucky__deck">
+                            <div class="lucky__card lucky__card-click">
+                                <div class="lucky__reveal lucky__reveal_front">
+                                    <h2>Твоє щасливе число сьогодні:</h2>
+                                    <div>
+                                        <p>?</p>
+                                    </div>
+                                </div>
+                                <div class="lucky__reveal lucky__reveal_back"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="randomize">
+                        <div class="randomize__container">
+
+                            <div class="randomize__result">
+                                <h2>Довірся магії чисел</h2>
+                            </div>
+
+                            <form class="randomize__form">
+
+                                <label>
+                                    Вибери числовий відрізок:
+                                </label>
+
+                                <div class="randomize__form-wrapper randomize__min">
+                                    <div data-input="min" class="quantity quantity-minus"> - </div>
+
+                                    <input id="input-min" class="randomize__input" type="number" placeholder="Від:"
+                                        required>
+
+                                    <div data-input="min" class="quantity quantity-plus"> + </div>
+                                </div>
+
+                                <div class="randomize__form-wrapper randomize__max">
+                                    <div data-input="max" class="quantity quantity-minus"> - </div>
+
+                                    <input id="input-max" class="randomize__input" type="number" placeholder="До:"
+                                        required>
+
+                                    <div data-input="max" class="quantity quantity-plus"> + </div>
+                                </div>
+
+
+                                <label for="input-count">
+                                    Кількість випадкових чисел:
+                                </label>
+
+                                <div class="randomize__form-wrapper randomize__count">
+                                    <div data-input="count" class="quantity quantity-minus"> - </div>
+
+                                    <input id="input-count" class="randomize__input" type="number" value="1">
+
+                                    <div data-input="count" class="quantity quantity-plus"> + </div>
+                                </div>
+
+                                <div class="randomize__unique">
+                                    <input id="input-unique" type="checkbox" checked>
+                                    <label for="input-unique">Тільки унікальні числа</label>
+                                </div>
+                                <button class="randomize__btn">Згенерувати</button>
+                                <button class="randomize__btn-clear">Очистити</button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="footer__container">
+                    <p>&#169; Anastasiia Bereza, 2022</p>
+                </div>
+            </footer>
+        </div>
+
+        <div class="bg bg_right">
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>
