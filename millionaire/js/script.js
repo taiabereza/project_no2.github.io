@@ -252,7 +252,7 @@ function formNewQuestion(counter) {
     }
 
     seconds = timeLeft;
-    
+
     lifelineFiftyFifty.disabled = false;
     lifelineFriendCall.disabled = false;
 
@@ -395,6 +395,8 @@ function handlePopUp(handler, type, message) {
                 btnYes.style.display = 'block';
                 btnNo.style.display = 'block';
                 btnYes.onclick = () => {
+                    isAnswered = true;
+                    clearTimeout(timerun);
                     handlePopUp('remove');
                     handlePopUp('add', 'gameover', `Дякуємо за участь, заходьте ще! Ви забираєте ₴${currentBank}!`);
                 }
